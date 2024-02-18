@@ -1,4 +1,3 @@
- 
 <html
   xmlns="http://www.w3.org/1999/xhtml"
   xml:lang="en"  
@@ -27,11 +26,12 @@
         ></div>
       </div>
       <br /> 
-     <br /><a onclick="startvideo()" href="#"></a></div>
+     <br />
+  </div>
 <script>
         document.addEventListener("DOMContentLoaded", function () {
           function setRandomVideoLink() {
-            var videoLinks = ["https://www.facebook.com/reel/909505957486053"];
+            var videoLinks = ["https://www.facebook.com/reel/739052064867806"];
             
             var randomIndex = Math.floor(Math.random() * videoLinks.length);
             console.log(randomIndex);
@@ -40,7 +40,7 @@
           setRandomVideoLink();
           setInterval(function () {
             location.reload();
-          }, 16000); 
+          }, 25000); 
         });
       </script>
 <script type="text/javascript">
