@@ -1,11 +1,6 @@
 
-<!DOCTYPE html>  
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xml:lang="en" 
-  lang="en"
-  itemscope
-  itemtype="http://schema.org/WebPage"><body>
+<html> 
+  <body>
       <div id="playerif" style="position: relative">
         <div
           id="infoi"
@@ -24,14 +19,16 @@
           data-show-text="false"
           data-allowfullscreen="false"
           data-autoplay="true"
+          data-show-captions="false"
         ></div>
       </div>
-      <br />
-     <br /><a onclick="startvideo()" href="#"></a></div>
-<script> 
+      <br /> 
+     <br /> <a onclick="startvideo()" href="#"></a></div>
+
+<script>
         document.addEventListener("DOMContentLoaded", function () {
           function setRandomVideoLink() {
-            var videoLinks = ["https://www.facebook.com/watch/?v=2058838087824922"];
+            var videoLinks = ["https://www.facebook.com/watch/?v=421072207154874"];
             
             var randomIndex = Math.floor(Math.random() * videoLinks.length);
             console.log(randomIndex);
@@ -40,7 +37,7 @@
           setRandomVideoLink();
           setInterval(function () {
             location.reload();
-          }, 29000); 
+          }, 65000); 
         });
       </script>
 <script type="text/javascript">
