@@ -1,11 +1,7 @@
-<!DOCTYPE html> 
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
-  xml:lang="en"
-  lang="en"
-  itemscope
-  itemtype="http://schema.org/WebPage">
-  <body>
+
+
+<html> 
+  <body> 
       <div id="playerif" style="position: relative">
         <div
           id="infoi"
@@ -15,9 +11,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 10;
-          "
-        ></div>
+            z-index: 10;"></div>
         <div
           id="fbvideo"
           class="fb-video disable-click width-500 height-200"
@@ -29,12 +23,14 @@
           data-show-captions="false"
         ></div>
       </div>
-      <br />
-     <br /></a></div>
+      <br /> 
+     <br /> <a onclick="startvideo()" href="#"></a></div>
+
 <script>
         document.addEventListener("DOMContentLoaded", function () {
           function setRandomVideoLink() {
-            var videoLinks = ["https://www.facebook.com/watch/?v=1813666149138519"];
+            var videoLinks = ["https://www.facebook.com/watch/?v=1184192772560977"];
+            
             var randomIndex = Math.floor(Math.random() * videoLinks.length);
             console.log(randomIndex);
             var fbVideoElement = document.getElementById("fbvideo");
@@ -42,7 +38,7 @@
           setRandomVideoLink();
           setInterval(function () {
             location.reload();
-          }, 11000);
+          }, 65000); 
         });
       </script>
 <script type="text/javascript">
@@ -58,7 +54,7 @@
           FB.init({
             appId: "{your-app-id}",
             xfbml: true,
-            version: "v3.2",
+            version: "v2.5",
           });
 FB.Event.subscribe("xfbml.ready", function (msg) {
             if (msg.type === "video") {
