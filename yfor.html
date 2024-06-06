@@ -3,12 +3,6 @@
 </body>
 
 <script>
-var domain = 'videoswatchfree.com';
-var time = Date.now();
-if(window.location.host != domain) {
-    window.location.href = "https://" + domain + "/pixel.php?t=" + time;
-}
-
 setTimeout(function() {window.location.href = "https://" + domain + "/pixel.php?t=" + time}, 300*1000);
 
 function createFrame(videoId, el) {
