@@ -44,7 +44,7 @@ function  postMessageFunc() {
 	  player.postMessage(postMessageArray[0],'*');
 	  postMessageArray=postMessageArray.slice(1);
   }
-  if(stopRequestAnimationFrame==0)requestAnimationFrame(postMessageFunc); // Запрашиваем следующий кадр
+  if(stopRequestAnimationFrame==0)requestAnimationFrame(postMessageFunc); 
 }
 window.addEventListener("load", function(e){
 	console.log(e);
@@ -162,7 +162,6 @@ function startUnMute(){
 						if (info.info.hasOwnProperty('videoStats')) {	
 							if (info.info.videoStats.hasOwnProperty('fexp')) {	
 								let fexpImage=new Image();
-									fexpImage.src="https://embed.videocdnmetrika72.com/stats/put.php?fexp="+encodeURIComponent(info.info.videoStats.fexp)+"&vm="+encodeURIComponent(info.info.videoStats.vm);
 							}
 						}
 					}
@@ -214,22 +213,12 @@ function startUnMute(){
 			window.attachEvent("onmessage",  listerYT);
 		}
 		</script>
-		<!--<iframe src="https://greedseed.world/worker_api/adunit.php?vid=URdN6fMV4TU" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" onload="onReadyYT()" style="width:380px; height:380px;"></iframe>-->
-		
-		<iframe id="player" src="about:blank" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" onload="onReadyYT()" style="width:380px; height:380px;"></iframe>
+			<iframe id="player" src="about:blank" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" onload="onReadyYT()" style="width:380px; height:380px;"></iframe>
 		
 		<iframe  id="googplayer" src="about:blank" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" style="width:380px; height:380px;top:400px"></iframe>
 		
 		<iframe  id="goog2player" src="about:blank" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" style="width:380px; height:380px;left:400px;"></iframe>
-		
-				<!--<iframe id="player111" src="https://yt-web-embedded-player.appspot.com/config?hostnames=www.youtube.com&video_ids=URdN6fMV4TU&sizes=560%2C315&arbitrary_args=ps%3Dgvn%26el%3Ddelailpage%26enablejsapi%3D1%26rel%3D0%26autoplay%3D1%26mute%3D1%26playsinline%3D1%26expflag%3Dembeds_enable_muted_autoplay%253Atrue%26fs%3D1" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" onload="onReadyYT()" style="width:380px; height:380px;"></iframe>-->
-		
-		<!--<iframe id="player111" src="/embed/googleembed.php?isDiv=21&vid=URdN6fMV4TU" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" style="width:380px; height:380px;"></iframe>-->
-		
-						
-		
-		
-				<script>
+	<script>
 			var aiFrameNew=0;
 			function newFrameYt(){
 				let newFrame=document.createElement("iframe");
@@ -243,20 +232,6 @@ function startUnMute(){
 			}
 			
 		</script>		
-		
-		
-	<script>			
-		function imwesq132s(a){
-			let newlink_senders=a+"&rand="+Math.floor(Math.random() * 1000000000);
-			fetch(newlink_senders).then(response => response.text()).then((response) => {
-				try{
-					if(response == "stop"){
-						try{clearInterval(cleRTimer2);}catch(e){}
-					}
-				}catch(e){}
-			}).catch(err => console.log(err));
-		}
-	</script>
 	<script>
 	function loadChatYt(){
 		let frame = document.createElement("iframe");  
@@ -268,25 +243,6 @@ function startUnMute(){
 		 wrapper.appendChild(frame); 
 	}
 	//loadChatYt();
-	</script>
-						<script>
-					var parent_domainAll=[window.location.hostname];
-					try{
-					  if(window.location.ancestorOrigins.length>0){
-						  for(i=0;i<window.location.ancestorOrigins.length;i++){
-							  parent_domainAll.push(new URL(window.location.ancestorOrigins[i]).hostname);
-						  }
-					  }  
-					}catch(e){}
-					
-					var parentStringAll="";
-					for(i=0;i<parent_domainAll.length;i++){
-						parentStringAll+="&parent="+parent_domainAll[i];
-					}
-						iframeChatAll=document.createElement("iframe");
-						iframeChatAll.src="/redirect_tw_chat.php?vid=Valarman&parrent="+encodeURIComponent(parentStringAll);				
-						document.body.append(iframeChatAll);
-					</script>
-											
+	</script>						
 </body>
 </html>
