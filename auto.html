@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        #playerif {
+            position: relative;
+        }
+        #infoi {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="playerif">
+        <div id="infoi"></div>
+        <div id="fbvideo" class="fb-video" 
+             data-href="" 
+             data-width="400" 
+             data-show-text="false" 
+             data-allowfullscreen="false" 
+             data-autoplay="true" 
+             data-show-captions="false">
+        </div>
+    </div>
+    <br />
+    <a onclick="startVideo()" href="#" id="startVideoLink">Start Video</a>
+
+    <script>
+        let videoLinks = [
+            "https://www.facebook.com/watch/?v=1577653236509909",
+            "https://www.facebook.com/watch/?v=1753330802105559" // Add more video URLs here
+        ];
+        let currentIndex = 0;
+
+        function setVideo(index) {
+            document.getElementById("fbvideo").setAttribute("data-href", videoLinks[index]);
+            FB.XFBML.parse(); // Re-render the Facebook video player
+        }
+
+        function loadNextVideo() {
+            currentIndex = (currentIndex + 1) % videoLinks.length; // Loop back to the first video if it's the end
+            setVideo(currentIndex);
+        }
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: "YOUR_APP_ID_HERE", // Replace with your App ID
+                xfbml: true,
+                version: "v2.5",
+            });
+
+            FB.Event.subscribe("xfbml.ready", function (msg) {
+                if (msg.type === "video") {
+                    msg.instance.play();
+                    msg.instance.subscribe("finishedPlaying", loadNextVideo); // Trigger next video on finish
+                }
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+
+        function startVideo() {
+            setVideo(currentIndex); // Start with the first video
+        }
+
+        // Reload the page every 20 seconds to play the next video
+        setInterval(function () {
+            loadNextVideo(); // Load the next video before refresh
+            location.reload();
+        }, 20000);
+    </script>
+</body>
+</html>
