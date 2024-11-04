@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        #playerif {
+            position: relative;
+        }
+        #infoi {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div id="playerif">
+        <div id="infoi"></div>
+        <div id="fbvideo" class="fb-video disable-click" 
+             data-href="" 
+             data-width="400" 
+             data-show-text="false" 
+             data-allowfullscreen="false" 
+             data-autoplay="true" 
+             data-show-captions="false">
+        </div>
+    </div>
+    <br />
+    <a onclick="startVideo()" href="#" id="startVideoLink">Start Video</a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function setRandomVideoLink() {
+                var videoLinks = ["https://www.facebook.com/watch/?v=1577653236509909"];
+                var randomIndex = Math.floor(Math.random() * videoLinks.length);
+                document.getElementById("fbvideo").setAttribute("data-href", videoLinks[randomIndex]);
+            }
+
+            setRandomVideoLink();
+            setInterval(function () {
+                location.reload();
+            }, 50000);
+        });
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: "{your-app-id}",
+                xfbml: true,
+                version: "v2.5",
+            });
+
+            FB.Event.subscribe("xfbml.ready", function (msg) {
+                if (msg.type === "video") {
+                    msg.instance.play();
+                }
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, "script", "facebook-jssdk");
+
+        function startVideo() {
+            if (my_video_player) {
+                my_video_player.play();
+            }
+        }
+    </script>
+</body>
+</html>
