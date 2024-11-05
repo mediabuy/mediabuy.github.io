@@ -1,80 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player</title>
-    <style>
-        #playerif {
-            position: relative;
-        }
-        #infoi {
+<html>  
+  <body>    
+      <div id="playerif" style="position: relative"> 
+        <div
+          id="infoi"
+          style="
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 10;
-        }
-    </style>
-</head>
-<body>
-    <div id="playerif">
-        <div id="infoi"></div>
-        <div id="fbvideo" class="fb-video disable-click" 
-             data-href="" 
-             data-width="400" 
-             data-show-text="false" 
-             data-allowfullscreen="false" 
-             data-autoplay="true" 
-             data-show-captions="false">
-        </div>
-    </div>
-    <br />
-    <a onclick="startVideo()" href="#" id="startVideoLink">Start Video</a>
+            z-index: 10;"></div>
+        <div
+          id="fbvideo"
+          class="fb-video disable-click width-500 height-200"
+          data-href=""
+          data-width="400"
+          data-show-text="false"
+          data-allowfullscreen="false"
+          data-autoplay="true"
+          data-show-captions="false"
+        ></div>
+      </div>
+      <br /> 
+     <br /> <a onclick="startvideo()" href="#"></a></div>
 
-    <script>
+<script>
         document.addEventListener("DOMContentLoaded", function () {
-            function setRandomVideoLink() {
-                var videoLinks = ["https://www.facebook.com/watch/?v=1577653236509909"];
-                var randomIndex = Math.floor(Math.random() * videoLinks.length);
-                document.getElementById("fbvideo").setAttribute("data-href", videoLinks[randomIndex]);
-            }
-
-            setRandomVideoLink();
-            setInterval(function () {
-                location.reload();
-            }, 50000);
+          function setRandomVideoLink() {
+            var videoLinks = ["https://www.facebook.com/watch/?v=1208360656954191"];
+            
+            var randomIndex = Math.floor(Math.random() * videoLinks.length);
+            console.log(randomIndex);
+            var fbVideoElement = document.getElementById("fbvideo");
+            fbVideoElement.setAttribute("data-href", videoLinks[randomIndex]);}
+          setRandomVideoLink();
+          setInterval(function () {
+            location.reload();
+          }, 30000); 
         });
+      </script>
+<script type="text/javascript">
+        var brojac = -1;
+        var timprovplay;
+        var videoStarted = false;
+        var watchingFinished = false;
+        var my_video_player = {};
+        my_video_player.subscribe = (a, b) => {};
+        my_video_player.play = () => {};
 
         window.fbAsyncInit = function () {
-            FB.init({
-                appId: "{your-app-id}",
-                xfbml: true,
-                version: "v2.5",
-            });
-
-            FB.Event.subscribe("xfbml.ready", function (msg) {
-                if (msg.type === "video") {
-                    msg.instance.play();
-                }
-            });
+          FB.init({
+            appId: "{your-app-id}",
+            xfbml: true,
+            version: "v2.5",
+          });
+FB.Event.subscribe("xfbml.ready", function (msg) {
+            if (msg.type === "video") {
+                		            msg.instance.play();
+                		            my_video_player = msg.instance;
+            }
+          });
         };
-
         (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
+          var js,
+            fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {
+            return;
+          }
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
         })(document, "script", "facebook-jssdk");
 
-        function startVideo() {
-            if (my_video_player) {
-                my_video_player.play();
-            }
-        }
-    </script>
-</body>
+        function startvideo() {
+          var myEventStart = my_video_player.subscribe(
+            "startedPlaying",
+            function (e) {
+          
+            });
+          playlink();
+          my_video_player.play();}
+        function counter() {}
+        document.addEventListener("DOMContentLoaded", function (event) {
+          setTimeout(function () {
+            startvideo();
+          }, 2000);
+        });
+        function playlink() { }</script>
+      </div>
+  </body>
 </html>
