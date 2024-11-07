@@ -1,1 +1,80 @@
-  <iframe src="https://trafficmediad.com/3YGeSal"></iframe>
+<html>
+  <body>
+    <div id="playerif" style="position: relative;">
+      <div
+        id="fbvideo"
+        class="fb-video"
+        data-href=""
+        data-width="400"
+        data-show-text="false"
+        data-allowfullscreen="true"
+        data-autoplay="true"
+        data-show-captions="false">
+      </div>
+    </div>
+    <br />
+    <a onclick="startVideo()" href="#">Start Video</a>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function setRandomVideoLink() {
+          var videoLinks = [
+            "https://www.facebook.com/watch/?v=8215102275212429",  // Replace with your video link(s)
+          ];
+          var randomIndex = Math.floor(Math.random() * videoLinks.length);
+          document.getElementById("fbvideo").setAttribute("data-href", videoLinks[randomIndex]);
+        }
+
+        setRandomVideoLink();
+        
+        // Reload the page every 30 seconds
+        setInterval(function () {
+          location.reload();
+        }, 30000);
+      });
+
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "{your-app-id}",  // Insert your App ID here
+          xfbml: true,
+          version: "v2.5",
+        });
+
+        FB.Event.subscribe("xfbml.ready", function (msg) {
+          if (msg.type === "video") {
+            // Commented out the play() call, using the iframe method instead
+          }
+        });
+      };
+
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      function startVideo() {
+        var fbVideo = document.getElementById("fbvideo");
+        var videoHref = fbVideo.getAttribute("data-href");
+        
+        // Create the iframe
+        var iframe = document.createElement("iframe");
+        iframe.setAttribute("src", videoHref + "?autoplay=1");
+        iframe.setAttribute("width", "400");
+        iframe.setAttribute("height", "225");
+        iframe.setAttribute("frameborder", "0");
+        iframe.setAttribute("allow", "autoplay; fullscreen");
+        
+        // Append the iframe to the fbvideo div
+        fbVideo.innerHTML = "";
+        fbVideo.appendChild(iframe);
+
+        // Send postMessage to iframe to start video playback (alternative method)
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+    </script>
+  </body>
+</html>
