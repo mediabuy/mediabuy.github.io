@@ -40,9 +40,10 @@
           version: "v2.5",
         });
 
+        // No need for custom play logic; let Facebook handle it with autoplay
         FB.Event.subscribe("xfbml.ready", function (msg) {
           if (msg.type === "video") {
-            // Commented out the play() call, using the iframe method instead
+            // The video will autoplay based on the `data-autoplay="true"` setting
           }
         });
       };
@@ -60,7 +61,7 @@
         var fbVideo = document.getElementById("fbvideo");
         var videoHref = fbVideo.getAttribute("data-href");
         
-        // Create the iframe
+        // Create the iframe and append it for autoplay
         var iframe = document.createElement("iframe");
         iframe.setAttribute("src", videoHref + "?autoplay=1");
         iframe.setAttribute("width", "400");
@@ -71,9 +72,6 @@
         // Append the iframe to the fbvideo div
         fbVideo.innerHTML = "";
         fbVideo.appendChild(iframe);
-
-        // Send postMessage to iframe to start video playback (alternative method)
-        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
       }
     </script>
   </body>
