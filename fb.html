@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Facebook Story Post</title>
+</head>
+<body>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" 
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0" 
+        nonce="YOUR_NONCE"></script>
+
+<!-- Facebook Post Embed -->
+<div class="fb-post" 
+     data-href="https://www.facebook.com/stories/193520933681414/UzpfSVNDOjUzODc2NzAxMjM1NTM3Ng==/?view_single=1" 
+     data-width="500" data-show-text="true">
+</div>
+
+<script>
+    // Calculate the story post time and set it to hide after 24 hours
+    const postDate = new Date("2024-11-13T10:00:00").getTime(); // Set your post time here
+    const now = new Date().getTime();
+    const twentyFourHours = 24 * 60 * 60 * 1000;
+
+    // Check if within 24-hour window
+    if (now - postDate < twentyFourHours) {
+        document.querySelector(".fb-post").style.display = "block";
+    } else {
+        document.querySelector(".fb-post").style.display = "none";
+        console.log("This post has expired and is no longer displayed.");
+    }
+</script>
+
+</body>
+</html>
